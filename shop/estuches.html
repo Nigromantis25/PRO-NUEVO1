@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estuches - Tienda</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Estuches</h1>
+      <a href="../index.html">Volver</a>
+      <a href="cart.html" class="btn-common" style="margin-left:12px">Ver carrito <span class="cart-count">(0)</span></a>
+    </header>
+
+    <main>
+      <div class="page-controls">
+        <label>Fondo de página (url): <input id="bg-url" type="text" placeholder="https://..."></label>
+        <button id="set-bg">Establecer fondo</button>
+        <button id="clear-bg">Borrar fondo</button>
+      </div>
+      <div class="products">
+        <article class="product" data-id="estuche-001" data-name="Estuche Multiuso" data-price="8.00" data-image="../images/banner-image-1.jpg">
+          <img src="../images/banner-image-1.jpg" alt="Estuche" style="max-width:200px;display:block;">
+          <h2>Estuche Multiuso</h2>
+          <p>Precio: $8.00</p>
+          <button class="add-to-cart">Añadir al carrito</button>
+          <button class="improve-bg">Mejorar fondo</button>
+        </article>
+
+        <article class="product" data-id="estuche-002" data-name="Estuche Premium" data-price="11.00" data-image="../images/cat-item2.jpg">
+          <img src="../images/cat-item2.jpg" alt="Estuche Premium" style="max-width:200px;display:block;">
+          <h2>Estuche Premium</h2>
+          <p>Precio: $11.00</p>
+          <button class="add-to-cart">Añadir al carrito</button>
+          <button class="improve-bg">Mejorar fondo</button>
+        </article>
+      </div>
+    </main>
+
+    <script src="../js/cart.js"></script>
+    <script>
+      // Recuperar fondo al cargar la página
+      document.addEventListener('DOMContentLoaded', function() {
+        const savedBg = localStorage.getItem('pageBackground');
+        if (savedBg) {
+          document.body.style.backgroundImage = `url('${savedBg}')`;
+          document.body.style.backgroundSize = 'cover';
+          document.body.style.backgroundRepeat = 'no-repeat';
+        }
+      });
+
+      // Guardar y establecer fondo
+      document.getElementById('set-bg').addEventListener('click', function() {
+        const url = document.getElementById('bg-url').value;
+        if (url) {
+          document.body.style.backgroundImage = `url('${url}')`;
+          document.body.style.backgroundSize = 'cover';
+          document.body.style.backgroundRepeat = 'no-repeat';
+          localStorage.setItem('pageBackground', url);
+        } else {
+          alert('Por favor, ingresa una URL válida para el fondo.');
+        }
+      });
+
+      // El manejo de "añadir al carrito" lo realiza `js/cart.js` (clave `sd_cart`).
+      // Si quieres personalizar el comportamiento aquí, usa la API global `sdCart`.
+    </script>
+  </body>
+</html>

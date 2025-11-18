@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crear cuenta — Kaira</title>
+  <link rel="stylesheet" href="../css/vendor.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./login.css">
+</head>
+<body class="auth-page">
+  <main class="auth-wrapper">
+    <section class="auth-card">
+      <div class="brand">1807</div>
+      <h1>Crear cuenta</h1>
+      <p class="muted">Regístrate como usuario, vendedor o administrador</p>
+
+      <form id="registerForm" class="form">
+        <label for="fullname">Nombre completo</label>
+        <input id="fullname" type="text" required placeholder="Tu nombre">
+
+        <label for="email">Correo electrónico</label>
+        <input id="email" type="email" required placeholder="nombre@ejemplo.com">
+
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" required placeholder="Mínimo 8 caracteres">
+
+        <label for="role">Quiero registrarme como</label>
+        <select id="role">
+          <option value="user">Usuario</option>
+          <option value="seller">Vendedor</option>
+          <option value="admin">Administrador</option>
+        </select>
+
+        <button class="btn primary" type="submit">Crear cuenta</button>
+      </form>
+
+      <div class="footer-links">
+        <a href="./login.html">¿Ya tienes cuenta? Inicia sesión</a>
+        <a href="../index.html">Volver a la tienda</a>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carrito - Tienda</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      .cart-list { max-width:800px; margin:20px auto; }
+      .cart-item { display:flex; gap:12px; padding:12px; border-bottom:1px solid #eee; align-items:center }
+      .cart-item img{ width:80px; height:auto }
+      .cart-actions button{ margin:0 4px }
+      .cart-total { text-align:right; font-weight:bold; margin-top:12px }
+    </style>
+  </head>
+  <body>
+    <!-- Header similar to main page -->
+    <nav class="navbar navbar-expand-lg bg-light text-uppercase fs-6 p-3 border-bottom align-items-center">
+      <div class="container-fluid">
+        <div class="row justify-content-between align-items-center w-100">
+          <div class="col-auto">
+            <a class="navbar-brand text-white" href="../index.html">
+              <svg width="112" height="45" viewBox="0 0 112 45" xmlns="http://www.w3.org/2000/svg" fill="#111">
+                <path d="M2.51367 34.9297C2.58398 34.6836 2.64844 34.3789 2.70703 34.0156C2.77734 33.6523 2.83594 33.2012 2.88281 32.6621C2.92969 32.123 2.96484 31.4844 2.98828 30.7461C3.01172 29.9961 3.02344 29.123 3.02344 28.127V16.6836C3.02344 15.6875 3.01172 14.8203 2.98828 14.082C2.96484 13.332 2.92969 12.6875 2.88281 12.1484C2.83594 11.5977 2.77734 11.1406 2.70703 10.7773C2.64844 10.4141 2.58398 10.1094 2.51367 9.86328V9.79297H6.73242V9.86328C6.66211 10.1094 6.5918 10.4141 6.52148 10.7773C6.46289 11.1406 6.41016 11.5977 6.36328 12.1484C6.32812 12.6875 6.29297 13.332 6.25781 14.082C6.23438 14.8203 6.22266 15.6875 6.22266 16.6836V20.6035L16.4883 12.2188C17.6367 11.2813 18.2109 10.4727 18.2109 9.79297H23.1504V9.86328C22.459 10.0273 21.7559 10.3437 21.041 10.8125C20.3379 11.2695 19.5879 11.832 18.791 12.5L9.7207 20.0938L20.6367 32.082C21.0938 32.5508 21.4805 32.9434 21.7969 33.2598C22.125 33.5645 22.4121 33.8223 22.6582 34.0332C22.9043 34.2324 23.127 34.4023 23.3262 34.543C23.5371 34.6719 23.7539 34.8008 23.9766 34.9297V35H18.8262C18.7793 34.8945 18.6973 34.7598 18.5801 34.5957C18.4746 34.4316 18.3457 34.2617 18.1934 34.0859C18.0527 33.9102 17.8945 33.7285 17.7188 33.541C17.5547 33.3535 17.3965 33.1777 17.2441 33.0137L6.22266 20.9199V28.127C6.22266 29.123 6.23438 29.9961 6.25781 30.7461C6.29297 31.4844 6.32812 32.123 6.36328 32.6621C6.41016 33.2012 6.46289 33.6523 6.52148 34.0156C6.5918 34.3789 6.66211 34.6836 6.73242 34.9297V35H2.51367V34.9297ZM45.3846 35V34.9297C45.408 34.8711 45.4256 34.7832 45.4373 34.666C45.4491 34.5488 45.4549 34.4434 45.4549 34.3496C45.4549 33.9863 45.4022 33.5879 45.2967 33.1543C45.203 32.709 45.0155 32.1582 44.7342 31.502L42.6073 26.7207C41.951 26.6973 41.078 26.6855 39.9881 26.6855C38.8983 26.6855 37.7205 26.6855 36.4549 26.6855C35.5291 26.6855 34.6327 26.6855 33.7655 26.6855C32.91 26.6855 32.1366 26.6973 31.4452 26.7207L29.4237 31.3613C29.2479 31.7949 29.0604 32.2695 28.8612 32.7852C28.662 33.3008 28.5623 33.8223 28.5623 34.3496C28.5623 34.502 28.5741 34.6309 28.5975 34.7363C28.6209 34.8301 28.6444 34.8945 28.6678 34.9297V35H25.0819V34.9297C25.2928 34.707 25.5565 34.3145 25.8729 33.752C26.1893 33.1777 26.535 32.4629 26.91 31.6074L36.9823 9.26562H38.3885L47.9334 30.7461C48.1561 31.25 48.3846 31.7422 48.619 32.2227C48.8651 32.6914 49.0936 33.1133 49.3045 33.4883C49.5155 33.8633 49.703 34.1797 49.867 34.4375C50.0311 34.6953 50.1424 34.8594 50.201 34.9297V35H45.3846V34.9297ZM33.994 25.1738C34.6737 25.1738 35.3709 25.1738 36.0858 25.1738C36.8006 25.1621 37.4979 25.1562 38.1776 25.1562C38.869 25.1445 39.5311 25.1387 40.1639 25.1387C40.7967 25.127 41.3709 25.1152 41.8866 25.1035L36.9471 13.9414L32.0955 25.1738H33.994Z" />
+              </svg>
+            </a>
+          </div>
+          <div class="col-auto">
+            <a href="../shop/cart.html" class="nav-link">CART <span class="cart-count">(0)</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-5">
+      <section class="text-center mb-5">
+        <h1 class="display-4" style="font-family:var(--heading-font);">Tu Carrito</h1>
+        <p class="text-muted">Revisa los productos seleccionados y finaliza tu compra.</p>
+      </section>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div id="cart-list" class="card p-3 mb-3">
+            <!-- items renderizados por js -->
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded">
+            <div>
+              <a href="../index.html" class="btn btn-outline-secondary">Seguir comprando</a>
+            </div>
+            <div class="text-end">
+              <div id="cart-total" class="h5">Total: $0.00</div>
+              <div class="mt-2">
+                <button id="clear-cart" class="btn btn-sm btn-danger">Vaciar carrito</button>
+                <button id="checkout" class="btn btn-sm btn-primary">Finalizar compra</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout form (hidden until click) -->
+          <div id="checkout-form" class="card p-4" style="display:none;">
+            <h3 class="mb-3">Finalizar compra</h3>
+            <form id="order-form">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Nombre completo</label>
+                  <input class="form-control" type="text" name="customerName" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="email" name="email" required>
+                </div>
+                <div class="col-12 mb-3">
+                  <label class="form-label">Dirección de envío</label>
+                  <input class="form-control" type="text" name="address" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Teléfono</label>
+                  <input class="form-control" type="text" name="phone" required>
+                </div>
+              </div>
+              <div class="text-end">
+                <button type="submit" class="btn btn-success">Generar PDF de pedido</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/cart.js"></script>
+    <!-- jsPDF desde CDN para generar PDF en el cliente -->
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script>
+      // Renderizar la página del carrito usando la API expuesta por js/cart.js
+      document.addEventListener('DOMContentLoaded', ()=>{
+        const list = document.getElementById('cart-list')
+        const totalEl = document.getElementById('cart-total')
+
+        function renderPage(){
+          const cart = (window.sdCart && window.sdCart.load()) || [];
+          list.innerHTML = '';
+          let total = 0;
+          cart.forEach((item, idx) => {
+            const row = document.createElement('div');
+            row.className = 'cart-item';
+            const img = document.createElement('img');
+            img.src = item.image || '';
+            img.alt = item.name || '';
+            const info = document.createElement('div');
+            info.style.flex = '1';
+            info.innerHTML = `<strong>${item.name}</strong><div>Cantidad: ${item.quantity || 1}</div>`;
+            const actions = document.createElement('div');
+            actions.className = 'cart-actions';
+            actions.innerHTML = `<div style="text-align:right">${(item.price?('$'+Number(item.price).toFixed(2)):'$0.00')}</div>`;
+            row.appendChild(img);
+            row.appendChild(info);
+            row.appendChild(actions);
+            list.appendChild(row);
+            total += (item.price || 0) * (item.quantity || 1);
+          });
+          totalEl.textContent = `Total: $${Number(total||0).toFixed(2)}`;
+          document.querySelectorAll('.cart-count').forEach(el=>{ const c = cart.reduce((s,i)=>s+(i.quantity||1),0); el.textContent = `(${c})`; });
+        }
+
+        renderPage();
+
+        document.getElementById('clear-cart').addEventListener('click', ()=>{
+          if(confirm('¿Vaciar carrito?')){
+            localStorage.removeItem('sd_cart')
+            location.reload()
+          }
+        })
+
+        document.getElementById('checkout').addEventListener('click', ()=>{
+          document.getElementById('checkout-form').style.display = 'block'
+          window.scrollTo({top: document.getElementById('checkout-form').offsetTop, behavior:'smooth'})
+        })
+
+        const orderForm = document.getElementById('order-form')
+        orderForm.addEventListener('submit', async (e)=>{
+          e.preventDefault()
+          const formData = new FormData(orderForm)
+          const data = Object.fromEntries(formData.entries())
+          const cart = (window.sdCart && window.sdCart.load()) || []
+          if(!cart.length) return alert('Tu carrito está vacío')
+
+          // Generar PDF con formato más profesional
+          const { jsPDF } = window.jspdf
+          const doc = new jsPDF({ unit: 'pt', format: 'a4' })
+          const margin = 40
+          const pageWidth = doc.internal.pageSize.getWidth()
+          let y = margin
+
+          try{
+            const logoUrl = '../images/logo.png'
+            const img = new Image()
+            img.crossOrigin = 'anonymous'
+            img.src = logoUrl
+            await new Promise((res,rej)=>{ img.onload = res; img.onerror = ()=>res() })
+            if(img.width){
+              doc.addImage(img, 'PNG', margin, y, 60, 60)
+            }
+          }catch(e){
+            console.warn('No se pudo cargar el logo', e)
+          }
+
+          // Encabezado profesional: empresa a la izquierda, datos del pedido a la derecha
+          const companyName = '1807.Studio';
+          const companyAddr = 'C/ Ejemplo 123, Tocuyo';
+          const fecha = new Date().toLocaleString();
+          const invoiceNo = 'PED-' + Date.now().toString().slice(-6);
+
+          doc.setFont('Helvetica', 'bold')
+          doc.setFontSize(20)
+          doc.text(companyName, margin, y)
+          doc.setFontSize(10)
+          doc.setFont('Helvetica', 'normal')
+          doc.text(companyAddr, margin, y + 14)
+
+          // Info del pedido a la derecha
+          doc.setFontSize(10)
+          doc.setFont('Helvetica', 'normal')
+          doc.text(`Fecha: ${fecha}`, pageWidth - margin, y, { align: 'right' })
+          doc.text(`Factura: ${invoiceNo}`, pageWidth - margin, y + 12, { align: 'right' })
+          y += 36
+
+          // Datos del cliente
+          doc.setFont('Helvetica', 'bold')
+          doc.setFontSize(12)
+          doc.text('Datos del cliente', margin, y)
+          y += 14
+          doc.setFont('Helvetica', 'normal')
+          doc.setFontSize(11)
+          doc.text(`Nombre: ${data.customerName}`, margin, y)
+          doc.text(`Email: ${data.email}`, pageWidth - margin, y, { align: 'right' })
+          y += 14
+          doc.text(`Dirección: ${data.address}`, margin, y)
+          doc.text(`Tel: ${data.phone}`, pageWidth - margin, y, { align: 'right' })
+          y += 20
+
+          // Tabla productos: cabecera
+          const tableX = margin
+          const colWidths = [260, 60, 80, 80] // nombre, qty, unit, total
+          doc.setFillColor(240,240,240)
+          doc.rect(tableX - 6, y - 12, colWidths.reduce((a,b)=>a+b,0) + 12, 20, 'F')
+          doc.setFont('Helvetica','bold')
+          doc.setFontSize(11)
+          doc.text('Producto', tableX, y)
+          doc.text('Cant', tableX + colWidths[0], y)
+          doc.text('Precio', tableX + colWidths[0] + colWidths[1], y)
+          doc.text('Total', tableX + colWidths[0] + colWidths[1] + colWidths[2], y)
+          y += 8
+          doc.setDrawColor(200)
+          y += 14
+          doc.setFont('Helvetica','normal')
+          let total = 0
+          cart.forEach((item, idx) => {
+            const qty = item.quantity || 1
+            const unit = Number(item.price||0)
+            const lineTotal = qty * unit
+            total += lineTotal
+            // Nombre (wrap si es largo)
+            const name = item.name || 'Producto'
+            doc.text(name, tableX, y)
+            doc.text(String(qty), tableX + colWidths[0], y, { align: 'right' })
+            doc.text(`$${unit.toFixed(2)}`, tableX + colWidths[0] + colWidths[1], y, { align: 'right' })
+            doc.text(`$${lineTotal.toFixed(2)}`, tableX + colWidths[0] + colWidths[1] + colWidths[2], y, { align: 'right' })
+            y += 16
+            if(y > doc.internal.pageSize.getHeight() - 80){ doc.addPage(); y = margin }
+          })
+
+          // Total final
+          y += 6
+          doc.setFont('Helvetica','bold')
+          doc.text(`Total: $${total.toFixed(2)}`, pageWidth - margin, y, { align: 'right' })
+
+          // Nota y firma
+          y += 30
+          doc.setFont('Helvetica','normal')
+          doc.setFontSize(10)
+          doc.text('Gracias por tu compra. Si tienes dudas escribe a contacto@1807.studio', margin, y)
+
+          doc.save(`${invoiceNo}.pdf`)
+          alert('Gracias por tu compra. Se ha generado un PDF con tu pedido.')
+          localStorage.removeItem('sd_cart')
+          location.reload()
+        })
+      })
+    </script>
+  </body>
+</html>
