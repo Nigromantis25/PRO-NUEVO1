@@ -2,45 +2,72 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Porta Libros - Tienda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/vendor.css">
     <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-    <header>
-      <h1>Porta Libros</h1>
-      <a href="../index.html">Volver</a>
-      <a href="cart.html" class="btn-common" style="margin-left:12px">Ver carrito <span class="cart-count">(0)</span></a>
-    </header>
-
-    <main>
-      <div class="page-controls">
-        <label>Fondo de página (url): <input id="bg-url" type="text" placeholder="https://..."></label>
-        <button id="set-bg">Establecer fondo</button>
-        <button id="clear-bg">Borrar fondo</button>
+    <div class="shop-container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <a href="../index.html" class="text-decoration-none">&larr; Volver</a>
+        </div>
+        <div>
+          <a href="cart.html" class="btn btn-outline-primary me-2">Ver carrito <span class="cart-count">(0)</span></a>
+          <span id="top-controls"></span>
+        </div>
       </div>
-      <div class="products">
-        <article class="product" data-id="funda-001" data-name="Funda para Libro A5" data-price="9.50" data-image="../images/banner-image-4.jpg">
-          <img src="../images/banner-image-4.jpg" alt="Funda A5" style="max-width:200px;display:block;">
-          <h2>Funda para Libro A5</h2>
-          <p>Precio: $9.50</p>
-          <button class="add-to-cart">Añadir al carrito</button>
-          <button class="improve-bg">Mejorar fondo</button>
-        </article>
 
-        <article class="product" data-id="funda-002" data-name="Funda para Libro A4" data-price="12.00" data-image="../images/banner-image-4.jpg">
-          <img src="../images/banner-image-4.jpg" alt="Funda A4" style="max-width:200px;display:block;">
-          <h2>Funda para Libro A4</h2>
-          <p>Precio: $12.00</p>
-          <button class="add-to-cart">Añadir al carrito</button>
-          <button class="improve-bg">Mejorar fondo</button>
-        </article>
-      </div>
-    </main>
+      <header class="mb-4">
+        <h1 class="display-5">Porta Libros</h1>
+      </header>
 
+      <main>
+        <div class="mb-3 text-center">
+          <label class="me-2">Fondo de página (url):</label>
+          <input id="bg-url" type="text" placeholder="https://..." class="form-control d-inline-block" style="width:380px;">
+          <button id="set-bg" class="btn btn-sm btn-outline-secondary ms-2">Establecer fondo</button>
+          <button id="clear-bg" class="btn btn-sm btn-outline-secondary ms-1">Borrar fondo</button>
+        </div>
+
+        <div class="products">
+          <article class="product" data-id="funda-001" data-name="Funda para Libro A5" data-price="9.50" data-image="../images/banner-image-4.jpg">
+            <div class="media" aria-hidden="true"></div>
+            <div class="info">
+              <h2>Funda para Libro A5</h2>
+              <p>Precio: $9.50</p>
+              <div class="actions center">
+                <button class="btn btn-primary add-to-cart">Añadir al carrito</button>
+                <button class="btn btn-outline-secondary improve-bg">Mejorar fondo</button>
+              </div>
+            </div>
+            <img src="../images/banner-image-4.jpg" alt="Funda A5" style="display:none;">
+          </article>
+
+          <article class="product" data-id="funda-002" data-name="Funda para Libro A4" data-price="12.00" data-image="../images/banner-image-4.jpg">
+            <div class="media" aria-hidden="true"></div>
+            <div class="info">
+              <h2>Funda para Libro A4</h2>
+              <p>Precio: $12.00</p>
+              <div class="actions center">
+                <button class="btn btn-primary add-to-cart">Añadir al carrito</button>
+                <button class="btn btn-outline-secondary improve-bg">Mejorar fondo</button>
+              </div>
+            </div>
+            <img src="../images/banner-image-4.jpg" alt="Funda A4" style="display:none;">
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/theme.js"></script>
     <script>
-      // Recuperar fondo al cargar la página
+      window.themeHelpers && window.themeHelpers.init({ insertToggle: '#top-controls' });
       document.addEventListener('DOMContentLoaded', function() {
         const savedBg = localStorage.getItem('pageBackground');
         if (savedBg) {
@@ -48,9 +75,9 @@
           document.body.style.backgroundSize = 'cover';
           document.body.style.backgroundRepeat = 'no-repeat';
         }
+        window.themeHelpers && window.themeHelpers.adaptImages();
       });
 
-      // Guardar y establecer fondo
       document.getElementById('set-bg').addEventListener('click', function() {
         const url = document.getElementById('bg-url').value;
         if (url) {
@@ -58,13 +85,18 @@
           document.body.style.backgroundSize = 'cover';
           document.body.style.backgroundRepeat = 'no-repeat';
           localStorage.setItem('pageBackground', url);
-        } else {
-          alert('Por favor, ingresa una URL válida para el fondo.');
-        }
+        } else { alert('Por favor, ingresa una URL válida para el fondo.') }
       });
+      document.getElementById('clear-bg').addEventListener('click', function(){ localStorage.removeItem('pageBackground'); document.body.style.backgroundImage = '' });
 
-      // El manejo de "añadir al carrito" lo realiza `js/cart.js` (clave `sd_cart`).
-      // Si quieres personalizar el comportamiento aquí, usa la API global `sdCart`.
+      document.querySelectorAll('.add-to-cart').forEach(btn=>{
+        btn.addEventListener('click', function(e){
+          const article = e.target.closest('.product');
+          const item = { id: article.dataset.id, name: article.dataset.name, price: Number(article.dataset.price||0), image: article.dataset.image, quantity:1 };
+          window.sdCart && window.sdCart.add? window.sdCart.add(item) : (function(){ const s = JSON.parse(localStorage.getItem('sd_cart')||'[]'); s.push(item); localStorage.setItem('sd_cart', JSON.stringify(s)); })();
+          alert('Producto añadido al carrito');
+        })
+      })
     </script>
   </body>
 </html>

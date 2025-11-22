@@ -34,9 +34,7 @@
   <script type="module" src="./auth.js"></script>
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Evita el envío por defecto
-      // Si más adelante quieres autenticar contra Supabase, hazlo aquí.
-      // Por ahora redirigimos a la página principal local según petición.
+      event.preventDefault(); 
       window.location.href = 'http://127.0.0.1:5503/index.html';
     });
   </script>

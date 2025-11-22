@@ -62,6 +62,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYF95z5y1HpUPRa9j7z9z74+7x1p1rV5z7fvepP5a1d5z" crossorigin="anonymous"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/theme.js"></script>
     <script>
       // El manejo de "añadir al carrito" lo realiza `js/cart.js` (clave `sd_cart`).
       // Si quieres personalizar el comportamiento aquí, usa la API global `sdCart`.
@@ -156,6 +157,11 @@
         doc.save('factura.pdf');
         alert('Factura generada y descargada.');
       }
+    </script>
+    <script>
+      // init theme helpers to adapt images and provide toggle
+      window.themeHelpers && window.themeHelpers.init({ insertToggle: '.container .offcanvas-header' });
+      document.addEventListener('DOMContentLoaded', ()=>{ window.themeHelpers && window.themeHelpers.adaptImages() });
     </script>
   </body>
 </html>
